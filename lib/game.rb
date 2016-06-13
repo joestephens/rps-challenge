@@ -6,6 +6,12 @@ class Game
     @game = new(weapons)
   end
 
+  def self.setup(name, weapon)
+    @game.add_player(Player.new(name, weapon))
+    @game.add_player(Player.new("Computer", Startup.random_weapon))
+    @game
+  end
+
   def self.instance
     @game
   end

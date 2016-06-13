@@ -17,10 +17,7 @@ class RPSApp < Sinatra::Base
 
   post '/enter-name' do
     weapon = Startup.get_weapon_by_name(params[:weapon])
-    @player_1 = Player.new(params[:name], weapon)
-    @game.add_player(@player_1)
-    @player_2 = Player.new("Computer", Startup.random_weapon)
-    @game.add_player(@player_2)
+    Game.setup(params[:name], weapon)
     redirect to '/play'
   end
 
